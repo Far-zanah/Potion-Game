@@ -26,10 +26,10 @@ Requests = [
 ]
 
 Recipes = [
-    ["Coffee Bean", "Stardust", "Memory"],
+    ["Coffee Bean", "Star Dust", "Memory"],
     ["Coffee Bean", "Honey", "Energy"],
     ["Dragon Scale", "Unlabeled Powder", "Concentration"],
-    ["Stardust", "Magic Gitter", "Fire Magic"],
+    ["Star Dust", "Magic Gitter", "Fire Magic"],
     ["Unicorn Fur", "Unlabeled Powder", "Teleportation"],
     ["Honey", "Dew Drops", "Healing"],
     ["Frog Slime", "Unicorn Fur", "Luck"],
@@ -62,22 +62,35 @@ print()
 print()
 print("The Customer says:")
 print(f'"{customer}"')
-print("===============================================")
-print("         THE INGREDIENTS SHELF")
-print("===============================================")
-
-for i in range(10):
-    print(f"{i+1}.{Ingredients[i][0]}")
-print()
-Choice = int(input("Choose an ingredient to inspect: "))
-index = Choice - 1
-print()
-print(Ingredients[index][0]) 
-print(Ingredients[index][1])
-print()
 Potions = []
-ans = input("Use the ingredient? (y/n)")
+while len(Potions) < 2:
+    print("===============================================")
+    print("         THE INGREDIENTS SHELF")
+    print("===============================================")
 
-if ans == "y":
-    Potions.append(Ingredients[index][0])
+    for i in range(10):
+        print(f"{i+1}.{Ingredients[i][0]}")
+    print()
+    Choice = int(input("Choose an ingredient to inspect: "))
+    index = Choice - 1
+    print()
+    print(Ingredients[index][0]) 
+    print(Ingredients[index][1])
+    print()
 
+    ans1 = input("Use the ingredient? (y/n) ")
+    if ans1 == "y":
+        Potions.append(Ingredients[index][0])
+    print()
+    print("----------------------------------------")
+    print("         SELECTED INGREDIENTS")
+    print("----------------------------------------")
+    for i in range(len(Potions)):
+        print(f"{i+1}.{Potions[i]}")
+    print()
+for Recipe in Recipes:
+    if Potions[0] == Recipe[0] and Potions[1]== Recipe[1]:
+        Created_potion = Recipe[2]
+        print(Created_potion)
+        break
+    
