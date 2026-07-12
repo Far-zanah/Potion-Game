@@ -20,7 +20,7 @@ Requests = [
     "I am tired everyday.",
     "I need to learn fire magic.",
     "I am being chased by the goblins.",
-    "I just survived the dragon attack."
+    "I just survived the dragon attack.",
     " I need to complete my art project.",
     "I am so unlucky."
 ]
@@ -88,9 +88,37 @@ while len(Potions) < 2:
     for i in range(len(Potions)):
         print(f"{i+1}.{Potions[i]}")
     print()
+Points = 5
+Created_potion = None
 for Recipe in Recipes:
     if Potions[0] == Recipe[0] and Potions[1]== Recipe[1]:
         Created_potion = Recipe[2]
         print(Created_potion)
         break
-    
+if Created_potion == None:
+    print(random.choice(Failed_Outcomes)),
+    print("You failed"),
+    Points -=1
+
+Customer_Requests = [
+    ["I need help focusing on my exam.", "Concentraion"],
+    ["My bullies keep picking on me.","Superhuman Strength"],
+    ["I need to sneak past the guards today","Invisibility"],
+    ["I keep forgetting.","Memory"],
+    ["I am tired everyday.","Energy"],
+    ["I need to learn fire magic.","Fire Magic"],
+    ["I am being chased by the goblins.","Teleportation"],
+    ["I just survived the dragon attack.","Healing"],
+    [" I need to complete my art project.","Creativity"],
+    ["I am so unlucky.","Luck"]
+    ]
+for Customer_Request in Customer_Requests:
+    if Customer_Request[0] == customer:
+        if Customer_Request[1] == Created_potion:
+            print("Thankyou! You saved me!")
+            Points += 5
+        else:
+            print(random.choice(Failed_Outcomes)),
+            print("You failed"),
+            Points -=1
+print(f"Points : {Points}")
